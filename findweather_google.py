@@ -6,5 +6,5 @@ cont = requests.get(url)
 cont2 = requests.get(url2)
 stuff = BeautifulSoup(cont.content,features="html5lib")
 #print(stuff.prettify())
-print(stuff.find_all('span', attrs={'data-testid':'TemperatureValue'})) #looking for data-testid="TemperatureValue"
-
+templist = stuff.find_all('span', attrs={'data-testid':'TemperatureValue'}) #looking for data-testid="TemperatureValue"
+print(type(templist[0]))
