@@ -1,17 +1,17 @@
 import requests #requests gathers information from a given webpage
 from bs4 import BeautifulSoup #BeautifulSoup parses HTML files gathered from requests
-url = requests.get("https://forecast.weather.gov/MapClick.php?lat=41.884250000000065&lon=-87.63244999999995") #the link to this webpage takes a set of coordinates as arguments
-soup = BeautifulSoup(url.content,features="html.parser") #assigns all the content of that page to the variable "soup"
-print(soup.prettify()) #we can use prettify() to display all html code in an easy-to-view format
-tds = soup.find_all("td") #finds everything on the page with the tags <td></td>, stores it as the list "tds"
-#print(tds)
-# print(tds[0])
-# print(tds[0].text)
-for i in tds: #loops through the tds list, every item is an instance of the <td></td> tag
-   print(i.text) #prints the text of the instance
+url = requests.get("https://www.wunderground.com/weather/us/il/evanston") #accesses Weather Underground, which takes a country (us), a state (il), and a city (evanston)
+        ####TRY IT OUT FOR YOURSELF: THIS URL IS FOR EVANSTON, IL. HOW CAN WE GET IT TO WORK WITH OTHER CITIES, STATES, OR COUNTRIES?###
+soup = BeautifulSoup(url.content,features="html5") #assigns all the content of that page to the variable "soup"
 
-# currentemp = soup.find("div",attrs={"class": "BNeawe iBp4i AP7Wnd"}).text
-# print("Your current weather is", currentemp)
-# city = soup.find("span",attrs={"class":"BNeawe tAd8D AP7Wnd"}).text
-# print("Your city is", city)
+#print(soup.find("lib-item-box"))
+#print(soup.prettify()) #we can use prettify() to display all html code in an easy-to-view format
+print(soup.find_all("span", "day")) #Finds all elements on the page that belong to <span class="day">: list includes "Tonight","Tomorrow", and "Tomorrow Night"
 
+
+modulelink = soup.find_all("a","module-link")       #Creates a list of all <a class=module-link> elements. Looking at the HTML with soup.prettify(), this is where the temperature and day are stored!
+print(modulelink[0])
+print()
+print(modulelink[0].text)
+##Note the difference between the two!##
+        ##TRY IT OUT FOR YOURSELF: WHAT OTHER INFORMATION CAN WE GET FROM THIS PAGE? ARE THERE OTHER PAGES THAT CAN GIVE US OTHER INFORMATION?##
