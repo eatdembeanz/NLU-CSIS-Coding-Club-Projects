@@ -1,0 +1,18 @@
+Info we NEED to gather from the given website (https://forecast.weather.gov):
+
+    Basic Weather Info:
+	    Temperature (High/Low)
+	    Humidity
+	    Wind Speed
+
+    Long-Term Weather Info:
+	    Time of Last Update (is it still relevant?)
+	    Extended Forecast (what's happening over the rest of the week?)
+
+    Summarizing Info:
+	    Detailed Forecast (summarize the weather forecast)
+
+	To Do Later:
+	    Interface
+	    Graphics?
+	    More Cities
